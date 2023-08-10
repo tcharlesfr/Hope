@@ -19,8 +19,8 @@ function Home() {
   return (
     <section>
       <div className={styles.pet_home_header}>
-        <h1>Adote um Pet</h1>
-        <p>Veja os detalhes de cada um e conheça o tutor dele</p>
+        <h1>Ajude uma ação</h1>
+        <p>Veja os detalhes de cada uma</p>
       </div>
       <div className={styles.pet_container}>
         {pets.length > 0 &&
@@ -43,7 +43,7 @@ function Home() {
               )}
             </div>
           ))}
-        {pets.length === 0 && <p>Não a pets disponiveis</p>}
+        {pets.length === 0 && <p>Não hà ações disponiveis</p>}
       </div>
     </section>
   );

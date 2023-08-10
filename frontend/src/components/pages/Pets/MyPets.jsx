@@ -77,8 +77,8 @@ function MyPets() {
   return (
     <section>
       <div className={styles.petlist_header}>
-        <h1>MyPets</h1>
-        <Link to="/pet/add">Cadastrar Pet</Link>
+        <h1>Minhas ações</h1>
+        <Link to="/pet/add">Cadastrar ação social</Link>
       </div>
       <div className={styles.petlist_container}>
         {pets.length > 0 &&
@@ -118,7 +118,7 @@ function MyPets() {
               </div>
             </div>
           ))}
-        {pets.length === 0 && <p>não há pets</p>}
+        {pets.length === 0 && <p>Não há ações sociais cadastradas</p>}
       </div>
     </section>
   );
