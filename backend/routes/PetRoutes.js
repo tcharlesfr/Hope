@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const PetController = require("../controllers/PetController");
+const PostController = require("../controllers/PostController");
 
 //middlewares
 const verifyToken = require("../helpers/verify-token");
@@ -11,22 +11,22 @@ router.post(
   "/create",
   verifyToken,
   imageUpload.array("images"),
-  PetController.create
+  PostController.create
 );
 
 // rota publica
-router.get("/", PetController.getAll);
+router.get("/", PostController.getAll);
 //privada
-router.get("/mypets", verifyToken, PetController.getAllUserPets);
-router.get("/myadoptions", verifyToken, PetController.getAllUserAdoptions);
-router.get("/:id", PetController.getPetById);
-router.delete("/:id", verifyToken, PetController.removePetById);
+router.get("/mypets", verifyToken, PostController.getAllUserPets);
+router.get("/myadoptions", verifyToken, PostController.getAllUserAdoptions);
+router.get("/:id", PostController.getPetById);
+router.delete("/:id", verifyToken, PostController.removePetById);
 router.patch(
   "/:id",
   verifyToken,
   imageUpload.array("images"),
-  PetController.updatePet
+  PostController.updatePet
 );
-router.patch('/schedule/:id', verifyToken, PetController.schedule)
-router.patch('/conclude/:id', verifyToken, PetController.concludeAdoption)
+router.patch('/schedule/:id', verifyToken, PostController.schedule)
+router.patch('/conclude/:id', verifyToken, PostController.concludeAdoption)
 module.exports = router;
