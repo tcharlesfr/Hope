@@ -1,9 +1,9 @@
 .post_home_header {
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
 }
 
 .post_home_header h1 {
-    margin-bottom: 0.3em;
+    /* margin-bottom: 0.3em; */
 }
 
 .post_container {
@@ -29,7 +29,7 @@
 }
 
 .post_card h3 {
-    color: #16479d;
+    color: white;
     margin-bottom: 1em;
     font-size: 1.6em;
     padding: 8px;
@@ -42,7 +42,7 @@
 .post_card a{
     text-decoration: none;
     background-color: #ffd400;
-    color: #16479d;
+    color: white;
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s;

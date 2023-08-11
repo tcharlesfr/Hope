@@ -1,4 +1,5 @@
 * {
+  /* background-color: aqua; */
   padding: 0;
   margin: 0;
   font-family: Helvetica;
@@ -6,13 +7,13 @@
 }
 
 h1 {
-  color: darkblue;
+  color: #1A2126;
   margin-bottom: 1em;
   font-size: 2.1em;
 }
 
 .bold {
   font-weight: bold;
-  color: darkblue;
+  color: #1A2126;
 }
 

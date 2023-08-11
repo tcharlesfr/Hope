@@ -19,11 +19,16 @@ import PostDetails from "./components/pages/Post/PostDetails";
 import { UserProvider } from "./context/UserContext";
 import EditPost from "./components/pages/Post/EditPost";
 import MyAdoptions from "./components/pages/Post/MyAdoptions";
+// import NavbarTeste from "./components/layout/NavbarTeste";
+// import Carrossel from './components/layout/Carrossel'
+
+// bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <Router>
-      <UserProvider>
+      <UserProvider>       
         <Navbar />
         <Message />
         <Container>
