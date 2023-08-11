@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import Logo from "../../assets/img/logohope.png";
+import Logo from "../../assets/img/pata2.png";
 
 import { useContext } from "react";
 
@@ -15,20 +15,20 @@ function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navbar_logo}>
         <img src={Logo} alt="logo" />
-        <h2>Hope</h2>
+        <h2>Get A Pet</h2>
       </div>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Adotar</Link>
         </li>
         {/* se o usuario estiver logado e autenticadp aparece x opção e se não estiver aparece para logar ou registrar, o que faz o usuario estar logado ou não é o token,  com a função useAuth ele verifica e muda para true, assim provendo o contexto dos demais componentes, token fica armazenado no storage do navegaro, f12/aplicativo/armazenamentolocal*/}
         {authenticated ? (
           <>
-            {/* <li>
-              <Link to="/post/myadoptions">Minhas adoções</Link>
-            </li> */}
             <li>
-              <Link to="/post/myposts">Minhas ações</Link>
+              <Link to="/pet/myadoptions">Minhas adoções</Link>
+            </li>
+            <li>
+              <Link to="/pet/mypets">Meus Pets</Link>
             </li>
             <li>
               <Link to="/user/profile">Perfil</Link>

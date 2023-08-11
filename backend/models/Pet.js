@@ -1,8 +1,8 @@
 const mongoose = require("../db/conn"); //trocar para connection
 const { Schema } = mongoose;
 
-const Post = mongoose.model(
-  "Post",
+const Pet = mongoose.model(
+  "Pet",
   new Schema(
     {
       name: {
@@ -34,4 +34,4 @@ const Post = mongoose.model(
   )
 );
 
-module.exports = Post;
+module.exports = Pet;

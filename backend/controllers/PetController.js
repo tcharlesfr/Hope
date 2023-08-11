@@ -1,12 +1,12 @@
-const Post = require("../models/Post");
+const Pet = require("../models/Pet");
 
 //helpers
 const getToken = require("../helpers/get-token");
 const getUserByToken = require("../helpers/get-user-by-token");
 const ObjectId = require("mongoose").Types.ObjectId; //verificar se o id é valido
 
-module.exports = class PostController {
-  //criar post
+module.exports = class PetController {
+  //criar pet
   static async create(req, res) {
     const { name, age, weight, color } = req.body;
 
@@ -43,8 +43,8 @@ module.exports = class PostController {
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    // criando post
-    const post = new Post({
+    // criando pet
+    const pet = new Pet({
       name,
       age,
       weight,
@@ -61,33 +61,33 @@ module.exports = class PostController {
 
     // percorrer as imagens e guardar apenas o nome
     images.map((image) => {
-      post.images.push(image.filename);
+      pet.images.push(image.filename);
     });
 
     // salvando no banco de dados
     try {
-      const newPost = await post.save();
-      res.status(201).json({ message: "post cadastrado com sucesso", newPost });
+      const newPet = await pet.save();
+      res.status(201).json({ message: "pet cadastrado com sucesso", newPet });
     } catch (error) {
       res.status(500).json({ message: error });
     }
   }
 
   static async getAll(req, res) {
-    const posts = await Post.find().sort("-createdAt");
+    const pets = await Pet.find().sort("-createdAt");
 
-    res.status(200).json({ posts: posts });
+    res.status(200).json({ pets: pets });
   }
 
-  static async getAllUserPosts(req, res) {
+  static async getAllUserPets(req, res) {
     // pegando os dados do dono
     const token = getToken(req);
     const user = await getUserByToken(token);
 
     //filtrar a busca pelo campo id
-    const posts = await Post.find({ "user._id": user._id }).sort("-createdAt");
+    const pets = await Pet.find({ "user._id": user._id }).sort("-createdAt");
 
-    res.status(200).json({ posts: posts });
+    res.status(200).json({ pets: pets });
   }
 
   static async getAllUserAdoptions(req, res) {
@@ -96,12 +96,12 @@ module.exports = class PostController {
     const user = await getUserByToken(token);
 
     //filtrar a busca pelo campo adopter
-    const posts = await Post.find({ "adopter._id": user._id }).sort("-createdAt");
+    const pets = await Pet.find({ "adopter._id": user._id }).sort("-createdAt");
 
-    res.status(200).json({ posts: posts });
+    res.status(200).json({ pets: pets });
   }
 
-  static async getPostById(req, res) {
+  static async getPetById(req, res) {
     // pegar o id vindo dos paramentros
     const id = req.params.id;
 
@@ -111,18 +111,18 @@ module.exports = class PostController {
       return;
     }
 
-    // verificar se o post existe
-    const post = await Post.findOne({ _id: id });
+    // verificar se o pet existe
+    const pet = await Pet.findOne({ _id: id });
 
-    if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
       return;
     }
 
-    res.status(200).json({ post: post });
+    res.status(200).json({ pet: pet });
   }
 
-  static async removePostById(req, res) {
+  static async removePetById(req, res) {
     const id = req.params.id;
 
     // checar se o id é valido
@@ -131,52 +131,52 @@ module.exports = class PostController {
       return;
     }
 
-    // verificar se o post existe
-    const post = await Post.findOne({ _id: id });
+    // verificar se o pet existe
+    const pet = await Pet.findOne({ _id: id });
 
-    if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
       return;
     }
 
-    //verificar se o usuario logado é quem vai excluir o post
+    //verificar se o usuario logado é quem vai excluir o pet
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    if (post.user._id.toString() !== user._id.toString()) {
+    if (pet.user._id.toString() !== user._id.toString()) {
       res
         .status(422)
         .json({ message: "Houve um problema em processar a sua solicitação" });
       return;
     }
 
-    await Post.findByIdAndRemove(id);
+    await Pet.findByIdAndRemove(id);
 
-    res.status(200).json({ message: "Post removido com sucesso" });
+    res.status(200).json({ message: "Pet removido com sucesso" });
   }
 
-  static async updatePost(req, res) {
+  static async updatePet(req, res) {
     const id = req.params.id;
 
     const { name, age, weight, color, available } = req.body;
 
     const images = req.files;
 
-    //objeto vazio para atualizar o post
+    //objeto vazio para atualizar o pet
     let updatedData = {};
 
-    const post = await Post.findOne({ _id: id });
+    const pet = await Pet.findOne({ _id: id });
 
-    if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
       return;
     }
 
-    //verificar se o usuario logado é quem vai excluir o post
+    //verificar se o usuario logado é quem vai excluir o pet
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    if (post.user._id.toString() !== user._id.toString()) {
+    if (pet.user._id.toString() !== user._id.toString()) {
       res
         .status(422)
         .json({ message: "Houve um problema em processar a sua solicitação" });
@@ -218,85 +218,85 @@ module.exports = class PostController {
       });
     }
 
-    await Post.findByIdAndUpdate(id, updatedData);
+    await Pet.findByIdAndUpdate(id, updatedData);
 
-    res.status(200).json({ message: "Post atualizado com sucesso" });
+    res.status(200).json({ message: "Pet atualizado com sucesso" });
   }
 
   static async schedule(req, res) {
     const id = req.params.id;
 
-    //verificar se existe post
-    const post = await Post.findOne({ _id: id });
+    //verificar se existe pet
+    const pet = await Pet.findOne({ _id: id });
 
-    if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
       return;
     }
 
-    //verificar se o post não é do usuario
+    //verificar se o pet não é do usuario
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    //post.user._id.equals() //outra forma
-    if (post.user._id.toString() === user._id.toString()) {
+    //pet.user._id.equals() //outra forma
+    if (pet.user._id.toString() === user._id.toString()) {
       res
         .status(422)
-        .json({ message: "você não pode agendar visita com seu proprio post" });
+        .json({ message: "você não pode agendar visita com seu proprio pet" });
       return;
     }
 
     // verificar se não tem visita marcada
-    if (post.adopter) {
-      if (post.adopter._id.equals(user._id)) {
+    if (pet.adopter) {
+      if (pet.adopter._id.equals(user._id)) {
         res
           .status(422)
-          .json({ message: "você já agendou uma visita com este post" });
+          .json({ message: "você já agendou uma visita com este pet" });
         return;
       }
     }
 
-    // adicionar usuario do post
-    post.adopter = {
+    // adicionar usuario do pet
+    pet.adopter = {
       _id: user._id,
       name: user.name,
       image: user.image,
     };
 
-    await Post.findByIdAndUpdate(id, post);
+    await Pet.findByIdAndUpdate(id, pet);
 
     res.status(200).json({
-      message: `A visita foi agendada com sucesso, entre em contato com ${post.user.name} pelo telefone ${post.user.phone}`,
+      message: `A visita foi agendada com sucesso, entre em contato com ${pet.user.name} pelo telefone ${pet.user.phone}`,
     });
   }
 
   static async concludeAdoption(req, res) {
     const id = req.params.id;
 
-    //verificar se existe post
-    const post = await Post.findOne({ _id: id });
+    //verificar se existe pet
+    const pet = await Pet.findOne({ _id: id });
 
-    if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
       return;
     }
 
-    //verificar se o post não é do usuario
+    //verificar se o pet não é do usuario
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    //post.user._id.equals() //outra forma
-    if (post.user._id.toString() !== user._id.toString()) {
+    //pet.user._id.equals() //outra forma
+    if (pet.user._id.toString() !== user._id.toString()) {
       res
         .status(422)
-        .json({ message: "você não pode agendar visita com seu proprio post" });
+        .json({ message: "você não pode agendar visita com seu proprio pet" });
       return;
     }
 
-    // trocando a disponibilidade do post
-    post.available = false;
+    // trocando a disponibilidade do pet
+    pet.available = false;
 
-    await Postt.findByIdAndUpdate(id, post);
+    await Pet.findByIdAndUpdate(id, pet);
 
     res.status(200).json({
       message: "Adoção concluida com sucesso", //editado já

@@ -10,15 +10,15 @@ import Login from "./components/pages/Auth/Login";
 import Register from "./components/pages/Auth/Register";
 import Home from "./components/pages/Home";
 import Profile from "./components/pages/User/Profile";
-import MyPosts from "./components/pages/Posts/MyPosts";
-import AddPost from "./components/pages/Posts/AddPost";
-import PostDetails from "./components/pages/Posts/PostDetails";
+import MyPets from "./components/pages/Pets/MyPets";
+import AddPet from "./components/pages/Pets/AddPet";
+import PetDetails from "./components/pages/Pets/PetDetails";
 
 //contextos
 //abraça todos componentes dando a possibildiade de acessarem o contexto do usuario
 import { UserProvider } from "./context/UserContext";
-import EditPost from "./components/pages/Posts/EditPost";
-import MyAdoptions from "./components/pages/Posts/MyAdoptions";
+import EditPet from "./components/pages/Pets/EditPet";
+import MyAdoptions from "./components/pages/Pets/MyAdoptions";
 
 function App() {
   return (
@@ -32,11 +32,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user/profile" element={<Profile />} />
-            <Route path="/post/myposts" element={<MyPosts />} />
-            <Route path="/post/add" element={<AddPost />} />
-            <Route path="/post/edit/:id" element={<EditPost />} />
-            <Route path="/post/myadoptions" element={<MyAdoptions />} />
-            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/pet/mypets" element={<MyPets />} />
+            <Route path="/pet/add" element={<AddPet />} />
+            <Route path="/pet/edit/:id" element={<EditPet />} />
+            <Route path="/pet/myadoptions" element={<MyAdoptions />} />
+            <Route path="/pet/:id" element={<PetDetails />} />
           </Routes>
         </Container>
         <Footer />

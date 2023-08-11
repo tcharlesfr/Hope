@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
-// mongodb+srv://admin:<password>@cluster0.k27qkp2.mongodb.net/?retryWrites=true&w=majority
-// mongodb://localhost:27017/local.getapost
-
-//Z4F3FmXiKEJ50NuM
+// mongodb+srv://tcharlesfr:<password>@cluster0.i1byjpj.mongodb.net/?retryWrites=true&w=majority
+// vYC13Px9Ow5JayhT
 async function main() {
-  await mongoose.connect("mongodb+srv://tcharlesfr:Z4F3FmXiKEJ50NuM@cluster0.i1byjpj.mongodb.net/?retryWrites=true&w=majority");
+  await mongoose.connect("mongodb+srv://admin:admin@cluster0.i1byjpj.mongodb.net/?retryWrites=true&w=majority");
   console.log("banco de dados conectado");
 }
 
