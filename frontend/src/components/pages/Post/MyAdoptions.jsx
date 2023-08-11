@@ -7,45 +7,45 @@ import styles from "./Dashboard.module.css";
 import RoundedImage from "../../layout/RoundedImage";
 
 function MyAdoptions() {
-  const [pets, setPets] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
     api
-      .get("/pets/myadoptions", {
+      .get("/posts/myadoptions", {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
       })
       .then((response) => {
-        setPets(response.data.pets);
+        setPosts(response.data.posts);
       });
   }, [token]);
 
   return (
     <section>
-      <div className={styles.petlist_container}>
-        {pets.length > 0 &&
-          pets.map((pet) => (
-            <div className={styles.petlist_row} key={pet._id}>
+      <div className={styles.postlist_container}>
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <div className={styles.postlist_row} key={post._id}>
               <RoundedImage
-                src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
-                alt={pet.name}
+                src={`${process.env.REACT_APP_API}/images/posts/${post.images[0]}`}
+                alt={post.name}
                 width="px75"
               />
-              <span className="Bold">{pet.name}</span>
+              <span className="Bold">{post.name}</span>
               <div className={styles.contacts}>
                 <p>
                   <span className="bold">Ligue para: </span>
-                  {pet.user.phone}
+                  {post.user.phone}
                 </p>
                 <p>
                   <span className="bold">Fale com: </span>
-                  {pet.user.name}
+                  {post.user.name}
                 </p>
               </div>
               <div className={styles.actions}>
-                {pet.available ? (
+                {post.available ? (
                   <p>Adoção em processo</p>
                 ) : (
                   <p>Parabéns por concluir a adoção</p>
@@ -53,7 +53,7 @@ function MyAdoptions() {
               </div>
             </div>
           ))}
-        {pets.length === 0 && <p>Ainda não há adoções de Pets</p>}
+        {posts.length === 0 && <p>Ainda não há adoções de Posts</p>}
       </div>
     </section>
   );

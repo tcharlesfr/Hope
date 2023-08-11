@@ -9,18 +9,18 @@ const imageStorage = multer.diskStorage({
     // pasta que eu vou salvar
     let folder = "";
 
-    // identificar se a url é de user ou pet
+    // identificar se a url é de user ou post
     if (req.baseUrl.includes("users")) {
       folder = "users";
-    } else if (req.baseUrl.includes("pets")) {
-      folder = "pets";
+    } else if (req.baseUrl.includes("posts")) {
+      folder = "posts";
     }
     // patch dinamico
     cb(null, `public/images/${folder}`);
   },
   //como vai ficar o nome do arquivo depois de salvo
   filename: function (req, file, cb) {
-    // colocar Date e numero aleatorio para n repetir os nomes e evitando a substituição de imagens
+    // colocar Date e numero aleatorio para n repostir os nomes e evitando a substituição de imagens
     // concatenando com o formato, resultado: 13416848141681.jpg
     cb(
       null,

@@ -15,7 +15,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navbar_logo}>
         <img src={Logo} alt="logo" />
-        <h2>Get A Pet</h2>
+        <h2>Get A Post</h2>
       </div>
       <ul>
         <li>
@@ -25,10 +25,10 @@ function Navbar() {
         {authenticated ? (
           <>
             <li>
-              <Link to="/pet/myadoptions">Minhas adoções</Link>
+              <Link to="/post/myadoptions">Minhas adoções</Link>
             </li>
             <li>
-              <Link to="/pet/mypets">Meus Pets</Link>
+              <Link to="/post/myposts">Meus Posts</Link>
             </li>
             <li>
               <Link to="/user/profile">Perfil</Link>

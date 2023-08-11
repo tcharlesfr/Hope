@@ -1,40 +1,40 @@
 import api from "../../../utils/api";
 
-import styles from "./AddPet.module.css";
+import styles from "./AddPost.module.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* hooks */
 import useFlashMessage from "../../../hooks/useFlashMessage";
-import PetForm from "../../form/PetForm";
+import PostForm from "../../form/PostForm";
 
-function AddPet() {
+function AddPost() {
   const navigate = useNavigate();
   //pegar o token do local storage para fazer a adição
   const [token] = useState(localStorage.getItem("token") || "");
   const { setFlashMessage } = useFlashMessage();
 
-  async function registerPet(pet) {
+  async function registerPost(post) {
     let msgType = "success";
 
     const formData = new FormData();
 
-    //pegar cada item do pet e jogar no formData, para ter a possibilidade de fazer upload de imagem, pre requesito passar pelo formdata e nao pelo body
-    await Object.keys(pet).forEach((key) => {
+    //pegar cada item do post e jogar no formData, para ter a possibilidade de fazer upload de imagem, pre requesito passar pelo formdata e nao pelo body
+    await Object.keys(post).forEach((key) => {
       if (key === "images") {
-        for (let i = 0; i < pet[key].length; i++) {
+        for (let i = 0; i < post[key].length; i++) {
           //vai jogando as imagens em 'images', formando um array, com isso construindo o objeto para er enviado para o backend
-          formData.append("images", pet[key][i]);
+          formData.append("images", post[key][i]);
         }
       } else {
-        //caso n tenha imagem, fazer apenas o append, passando o nome da chave(key) e o valor(pet[key]), com este metodo ele acha o objeto dinamicamente
-        formData.append(key, pet[key]);
+        //caso n tenha imagem, fazer apenas o append, passando o nome da chave(key) e o valor(post[key]), com este metodo ele acha o objeto dinamicamente
+        formData.append(key, post[key]);
       }
     });
 
     const data = await api
-      .post("pets/create", formData, {
+      .post("posts/create", formData, {
         //passando a autorização pelo cabeçalho
         Authorization: `Bearer ${JSON.parse(token)}`,
         "Content-Type": "multipart/form-data",
@@ -48,22 +48,22 @@ function AddPet() {
       });
 
     setFlashMessage(data.message, msgType);
-    //enviando o usuario para area de seus pets caso n tenha erros
+    //enviando o usuario para area de seus posts caso n tenha erros
     if (msgType !== "error") {
-      navigate("/pet/mypets");
+      navigate("/post/myposts");
     }
   }
 
   return (
-    <section className={styles.addpet_header}>
+    <section className={styles.addpost_header}>
       <div>
-        <h1>Cadestre o pet</h1>
+        <h1>Cadestre o post</h1>
         <p>Despois ele ficara disponivel para adoção</p>
       </div>
-      {/* passando metodo registerPet para o filho e ele pode acessar por lá */}
-      <PetForm handleSubmit={registerPet} btnText="Cadastrar Pet" />
+      {/* passando metodo registerPost para o filho e ele pode acessar por lá */}
+      <PostForm handleSubmit={registerPost} btnText="Cadastrar Post" />
     </section>
   );
 }
 
-export default AddPet;
+export default AddPost;

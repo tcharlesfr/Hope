@@ -31,14 +31,14 @@
     font-weight: bold;
 }
 
-/* form de pets */
-.preview_pet_images {
+/* form de posts */
+.preview_post_images {
     display: flex;
     justify-content: center;
     margin: 1em;
 }
 
-.preview_pet_images img{
+.preview_post_images img{
     width: 100px;
     /* alterar */
     height: 100px;

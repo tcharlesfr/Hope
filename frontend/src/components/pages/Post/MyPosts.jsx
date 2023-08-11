@@ -11,39 +11,39 @@ import styles from "./Dashboard.module.css";
 //hooks
 import useFlashMessage from "../../../hooks/useFlashMessage";
 
-function MyPets() {
-  const [pets, setPets] = useState([]);
+function MyPosts() {
+  const [posts, setPosts] = useState([]);
   const [token] = useState(localStorage.getItem("token") || "");
   const { setFlashMessage } = useFlashMessage();
 
   //chamar a api, enviando o token de autorização
   useEffect(() => {
     api
-      .get("/pets/mypets", {
+      .get("/posts/myposts", {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
       })
       .then((response) => {
-        setPets(response.data.pets);
+        setPosts(response.data.posts);
       });
   }, [token]);
 
-  async function removePet(id) {
+  async function removePost(id) {
     let msgType = "success";
 
     const data = await api
-      .delete(`/pets/${id}`, {
+      .delete(`/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
       })
       .then((response) => {
         //excluir do front
-        //filtrando o pet excluido dos demais
+        //filtrando o post excluido dos demais
         //desta forma poupa recurso do backend
-        const updatedPets = pets.filter((pet) => pet._id !== id);
-        setPets(updatedPets);
+        const updatedPosts = posts.filter((post) => post._id !== id);
+        setPosts(updatedPosts);
         return response.data;
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ function MyPets() {
     let msgType = "success";
 
     const data = await api
-      .patch(`/pets/conclude/${id}`, {
+      .patch(`/posts/conclude/${id}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -76,52 +76,52 @@ function MyPets() {
 
   return (
     <section>
-      <div className={styles.petlist_header}>
-        <h1>MyPets</h1>
-        <Link to="/pet/add">Cadastrar Pet</Link>
+      <div className={styles.postlist_header}>
+        <h1>MyPosts</h1>
+        <Link to="/post/add">Cadastrar Post</Link>
       </div>
-      <div className={styles.petlist_container}>
-        {pets.length > 0 &&
-          pets.map((pet) => (
-            <div className={styles.petlist_row} key={pet._id}>
+      <div className={styles.postlist_container}>
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <div className={styles.postlist_row} key={post._id}>
               <RoundedImage
-                src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
-                alt={pet.name}
+                src={`${process.env.REACT_APP_API}/images/posts/${post.images[0]}`}
+                alt={post.name}
                 width="px75"
               />
-              <span className="Bold">{pet.name}</span>
+              <span className="Bold">{post.name}</span>
               <div className={styles.actions}>
-                {pet.available ? (
+                {post.available ? (
                   <>
-                    {pet.adopter && (
+                    {post.adopter && (
                       <button
                         className={styles.conclude_btn}
                         onClick={() => {
-                          concludeAdoption(pet._id);
+                          concludeAdoption(post._id);
                         }}
                       >
                         Concluir adoção
                       </button>
                     )}
-                    <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
+                    <Link to={`/post/edit/${post._id}`}>Editar</Link>
                     <button
                       onClick={() => {
-                        removePet(pet._id);
+                        removePost(post._id);
                       }}
                     >
                       Excluir
                     </button>
                   </>
                 ) : (
-                  <p>Pet já adotado</p>
+                  <p>Post já adotado</p>
                 )}
               </div>
             </div>
           ))}
-        {pets.length === 0 && <p>não há pets</p>}
+        {posts.length === 0 && <p>não há posts</p>}
       </div>
     </section>
   );
 }
 
-export default MyPets;
+export default MyPosts;
