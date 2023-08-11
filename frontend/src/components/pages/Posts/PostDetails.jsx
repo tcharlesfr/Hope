@@ -1,6 +1,6 @@
 import api from "../../../utils/api";
 
-import styles from "./PetDetails.module.css";
+import styles from "./PostDetails.module.css";
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
@@ -8,15 +8,15 @@ import { useParams, Link } from "react-router-dom";
 //hooks
 import useFlashMessage from "../../../hooks/useFlashMessage";
 
-function PetDetails() {
-  const [pet, setPet] = useState({});
+function PostDetails() {
+  const [post, setPost] = useState({});
   const { id } = useParams();
   const { setFlashMessage } = useFlashMessage();
   const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
-    api.get(`/pets/${id}`).then((response) => {
-      setPet(response.data.pet);
+    api.get(`/posts/${id}`).then((response) => {
+      setPost(response.data.post);
     });
   }, [id]);
 
@@ -25,7 +25,7 @@ function PetDetails() {
 
     const data = await api({
         method:'patch',
-        url:`/pets/schedule/${pet._id}`,
+        url:`/posts/schedule/${post._id}`,
         headers:{
             Authorization:`Bearer ${JSON.parse(token)}`
         }
@@ -42,28 +42,28 @@ function PetDetails() {
 
   return (
     <>
-      {pet.name && (
-        <section className={styles.pet_details_container}>
-          <div className={styles.pet_details_header}>
-            <h1>Conhecendo o Pet: {pet.name}</h1>
+      {post.name && (
+        <section className={styles.post_details_container}>
+          <div className={styles.post_details_header}>
+            <h1>Conhecendo o Post: {post.name}</h1>
             <p>Se tiver interesse, marque uma visita para conhecê-lo</p>
           </div>
-          <div className={styles.pet_images}>
-            {pet.images.map((image, index) => (
+          <div className={styles.post_images}>
+            {post.images.map((image, index) => (
               <img
-                src={`${process.env.REACT_APP_API}/images/pets/${image}`}
-                alt={pet.name}
+                src={`${process.env.REACT_APP_API}/images/posts/${image}`}
+                alt={post.name}
                 key={index}
               />
             ))}
           </div>
           <p>
             <span className="bold">Peso: </span>
-            {pet.weight}kg
+            {post.weight}kg
           </p>
           <p>
             <span className="bold">Idade: </span>
-            {pet.age} anos
+            {post.age} anos
           </p>
           {token ? (
             <button onClick={schedule}>solicitar uma visita</button>
@@ -79,4 +79,4 @@ function PetDetails() {
   );
 }
 
-export default PetDetails;
+export default PostDetails;

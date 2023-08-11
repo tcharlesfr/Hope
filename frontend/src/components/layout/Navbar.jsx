@@ -25,10 +25,10 @@ function Navbar() {
         {authenticated ? (
           <>
             {/* <li>
-              <Link to="/pet/myadoptions">Minhas adoções</Link>
+              <Link to="/post/myadoptions">Minhas adoções</Link>
             </li> */}
             <li>
-              <Link to="/pet/mypets">Minhas ações</Link>
+              <Link to="/post/myposts">Minhas ações</Link>
             </li>
             <li>
               <Link to="/user/profile">Perfil</Link>

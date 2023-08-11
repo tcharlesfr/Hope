@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // mongodb+srv://admin:<password>@cluster0.k27qkp2.mongodb.net/?retryWrites=true&w=majority
-// mongodb://localhost:27017/local.getapet
+// mongodb://localhost:27017/local.getapost
 
 //Z4F3FmXiKEJ50NuM
 async function main() {

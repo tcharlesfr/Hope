@@ -17,15 +17,15 @@ router.post(
 // rota publica
 router.get("/", PostController.getAll);
 //privada
-router.get("/mypets", verifyToken, PostController.getAllUserPets);
+router.get("/myposts", verifyToken, PostController.getAllUserPosts);
 router.get("/myadoptions", verifyToken, PostController.getAllUserAdoptions);
-router.get("/:id", PostController.getPetById);
-router.delete("/:id", verifyToken, PostController.removePetById);
+router.get("/:id", PostController.getPostById);
+router.delete("/:id", verifyToken, PostController.removePostById);
 router.patch(
   "/:id",
   verifyToken,
   imageUpload.array("images"),
-  PostController.updatePet
+  PostController.updatePost
 );
 router.patch('/schedule/:id', verifyToken, PostController.schedule)
 router.patch('/conclude/:id', verifyToken, PostController.concludeAdoption)

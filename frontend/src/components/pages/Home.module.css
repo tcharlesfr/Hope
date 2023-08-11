@@ -1,18 +1,18 @@
-.pet_home_header {
+.post_home_header {
     margin-bottom: 2em;
 }
 
-.pet_home_header h1 {
+.post_home_header h1 {
     margin-bottom: 0.3em;
 }
 
-.pet_container {
+.post_container {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
 
-.pet_card {
+.post_card {
     width: 22%;
     margin: 1.5%;
     display: flex;
@@ -20,7 +20,7 @@
     text-align: center;
 }
 
-.pet_card_image {
+.post_card_image {
     background-size: cover;
     background-position: center;
     height: 225px;
@@ -28,18 +28,18 @@
     margin-bottom: 1.2em;
 }
 
-.pet_card h3 {
+.post_card h3 {
     color: #16479d;
     margin-bottom: 1em;
     font-size: 1.6em;
     padding: 8px;
 }
 
-.pet_card p{
+.post_card p{
     margin-bottom: 1em;
 }
 
-.pet_card a{
+.post_card a{
     text-decoration: none;
     background-color: #ffd400;
     color: #16479d;
@@ -51,7 +51,7 @@
     font-size: 1.1em;
 }
 
-.pet_card a:hover{
+.post_card a:hover{
     background-color: #16479d;
     color: #fff;
 }

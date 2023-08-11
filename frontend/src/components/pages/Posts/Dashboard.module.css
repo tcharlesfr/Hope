@@ -1,15 +1,15 @@
-.petlist_header{
+.postlist_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2em;
 }
 
-.petlist_header h1 {
+.postlist_header h1 {
     margin: 0;
 }
 
-.petlist_header a{
+.postlist_header a{
     text-decoration: none;
     background-color: #16479d;
     color: #fff;
@@ -21,17 +21,17 @@
     border: 2px solid #16479d;
 }
 
-.petlist_header a:hover {
+.postlist_header a:hover {
     background-color: transparent;
     color: #16479d;
 }
 
-.petlist_container {
+.postlist_container {
     display: flex;
     flex-direction: column;
 }
 
-.petlist_row {
+.postlist_row {
     border-bottom: 1px solid #16479d;
     padding: 1em;
     margin: 1em;
@@ -40,11 +40,11 @@
     width: 100%;
 }
 
-.petlist_row img{
+.postlist_row img{
     margin-right: 1em;
 }
 
-.petlist_row span{
+.postlist_row span{
     min-width: 100px;
 }
 
