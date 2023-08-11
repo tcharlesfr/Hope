@@ -45,8 +45,8 @@ function PostDetails() {
       {post.name && (
         <section className={styles.post_details_container}>
           <div className={styles.post_details_header}>
-            <h1>Conhecendo o Post: {post.name}</h1>
-            <p>Se tiver interesse, marque uma visita para conhecê-lo</p>
+            <h1>{post.name}</h1>
+            <p>Se tiver interesse, entre em contato para ajudar</p>
           </div>
           <div className={styles.post_images}>
             {post.images.map((image, index) => (
@@ -66,11 +66,11 @@ function PostDetails() {
             {post.age} anos
           </p>
           {token ? (
-            <button onClick={schedule}>solicitar uma visita</button>
+            <button onClick={schedule}>Entrar em contato</button>
           ) : (
             <p>
               Você precisa <Link to="/register">criar uma conta</Link> para
-              solicitar uma visita
+              entrar em contato
             </p>
           )}
         </section>

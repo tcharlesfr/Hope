@@ -19,8 +19,8 @@ function Home() {
   return (
     <section>
       <div className={styles.post_home_header}>
-        <h1>Adote um Post</h1>
-        <p>Veja os detalhes de cada um e conheça o tutor dele</p>
+        <h1>Conheça as ações solidarias</h1>
+        <p>Veja os detalhes de cada uma e participe</p>
       </div>
       <div className={styles.post_container}>
         {posts.length > 0 &&
@@ -39,11 +39,11 @@ function Home() {
               {post.available ? (
                 <Link to={`post/${post._id}`}>mais detalhes</Link>
               ) : (
-                <p className={styles.adopted_text}>adotado</p>
+                <p className={styles.adopted_text}>Indisponivel</p>
               )}
             </div>
           ))}
-        {posts.length === 0 && <p>Não a posts disponiveis</p>}
+        {posts.length === 0 && <p>Não a postagens disponiveis</p>}
       </div>
     </section>
   );

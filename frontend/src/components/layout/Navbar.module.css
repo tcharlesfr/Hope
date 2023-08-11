@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     padding:  1em 1.5em;
-    background-color: yellow;
-    color: darkblue;
+    background-color: purple;
+    color: white;
 }
 
 .navbar_logo {
@@ -12,27 +12,28 @@
 }
 
 .navbar_logo img {
-    width: 40px;
+    width: 60px;
     margin-right: 0.8em;
 }
 
 .navbar ul{
     display: flex;
+    font-size: 1em;
     align-items: center;
     list-style: none;
 }
 
 .navbar li, a {
     text-decoration: none;
-    color: darkblue;
+    color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: .5s;
+    transition: 0.5s;
     padding: 0.5em 0.8em;
     border-radius: 5px;
 }
 
 .navbar li:hover > a{
-    background-color: darkblue;
-    color: white;
+    background-color: white;
+    color: rgb(49, 49, 49);
 }

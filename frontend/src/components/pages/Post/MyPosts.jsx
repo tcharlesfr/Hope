@@ -77,8 +77,8 @@ function MyPosts() {
   return (
     <section>
       <div className={styles.postlist_header}>
-        <h1>MyPosts</h1>
-        <Link to="/post/add">Cadastrar Post</Link>
+        <h1>Minhas postagens</h1>
+        <Link to="/post/add">Criar postagem</Link>
       </div>
       <div className={styles.postlist_container}>
         {posts.length > 0 &&
@@ -104,7 +104,7 @@ function MyPosts() {
                       </button>
                     )}
                     <Link to={`/post/edit/${post._id}`}>Editar</Link>
-                    <button
+                    <button className={styles.actions_red}
                       onClick={() => {
                         removePost(post._id);
                       }}

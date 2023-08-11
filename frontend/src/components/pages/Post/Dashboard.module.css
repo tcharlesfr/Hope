@@ -69,6 +69,12 @@
 
 .actions a:hover,
 .actions button:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.actions a:hover,
+.actions_red button:hover {
     background-color: #16479d;
     color: #fff;
 }
