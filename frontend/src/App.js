@@ -22,8 +22,6 @@ import MyAdoptions from "./components/pages/Post/MyAdoptions";
 // import NavbarTeste from "./components/layout/NavbarTeste";
 // import Carrossel from './components/layout/Carrossel'
 
-// bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

@@ -65,15 +65,15 @@ function PostForm({ handleSubmit, postData, btnText }) {
         multiple={true}
       />
       <Input
-        text="Nome do Post"
+        text="Título do Post"
         type="text"
         name="name"
-        placeholder="Digite o nome"
+        placeholder="Digite o título"
         handleOnChange={handleChange}
         value={post.name || ""}
       />
       <Input
-        text="Idade do Post"
+        text="Descrição do Post"
         type="text"
         name="age"
         placeholder="Digite a idade"
@@ -81,20 +81,20 @@ function PostForm({ handleSubmit, postData, btnText }) {
         value={post.age || ""}
       />
       <Input
-        text="Peso do Post"
+        text="Formas de ajudar"
         type="number"
         name="weight"
-        placeholder="Digite o pesp"
+        placeholder="Digite as formas de ajuda"
         handleOnChange={handleChange}
         value={post.weight || ""}
       />
-      <Select
+      {/* <Select
         name="color"
         text="Selecione a cor"
         options={colors}
         handleOnChange={handleColor}
         value={post.color || ""}
-      />
+      /> */}
       <input type="submit" value={btnText} />
     </form>
   );

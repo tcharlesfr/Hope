@@ -1,11 +1,22 @@
 .navbar {
     display: flex;
+    justify-content: space-between;
     
 }
 
 .navbar_logo {
     display: flex;
     align-items: center;
+}
+
+.navbar_logo_user {
+    display: flex;
+    align-items: center;
+}
+
+.navbar_logo_user  img {
+    width: 50px;
+    margin-right: 0.8em;
 }
 
 .navbar_logo img {
