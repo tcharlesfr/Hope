@@ -22,24 +22,23 @@ function Navbar2() {
   const { authenticated, logout } = useContext(Context);
 
   //pegar o token para pegar os dados do usuario
-  // const [token] = useState(localStorage.getItem("token") || "");
-  // const [user, setUser] = useState({});
+  const [token] = useState(localStorage.getItem('token') || '')
+  const [user, setUser] = useState({});
 
 
-  // useEffect(() => {
-  //   //checar o usuario
-  //   token &&
-  //     api
-  //       .get("/users/checkuser", {
-  //         headers: {
-  //           //garantindo que o token vai ser enviado da forma correta
-  //           Authorization: `Bearer ${JSON.parse(token)}`,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         setUser(response.data);
-  //       });
-  // }, [token]);
+  useEffect(() => {
+    //checar o usuario
+    api
+      .get("/users/checkuser", {
+        headers: {
+          //garantindo que o token vai ser enviado da forma correta
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
+  }, [token])
 
   return (
     <Navbar bg="primary" data-bs-theme="dark">
@@ -54,21 +53,17 @@ function Navbar2() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar id="basic-navbar-nav">
           <Nav className="me-auto">
-            
-            {authenticated ? (
+            {authenticated && token ? (
+              
               <>
+                
                 <div className={styles.navbar_logo_user}>
-                  <img src={LogoUser} alt={"logo"} />
+                <img src={LogoUser} alt={user.name} />
                 </div>
-
-                <NavDropdown
-                  title={"perfil"}
-                  id="basic-nav-dropdown"
-                >
-                  {/* <NavDropdown.Item>
-                    {user.name}
-                  </NavDropdown.Item> */}
-                  <NavDropdown.Item href="/post/myposts">
+                
+                <NavDropdown title={user.name} id="basic-nav-dropdown">
+                  
+                  <NavDropdown.Item href="/post/myposts">                    
                     Minhas Postagen
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/user/profile">
@@ -78,6 +73,7 @@ function Navbar2() {
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
                 </NavDropdown>
+              
               </>
             ) : (
               <>

@@ -17,6 +17,8 @@
 .navbar_logo_user  img {
     width: 50px;
     margin-right: 0.8em;
+    border-radius: 100%;
+    
 }
 
 .navbar_logo img {

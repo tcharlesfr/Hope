@@ -13,6 +13,8 @@ import styles from "./Home.module.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+import Carrossel from '../layout/Carrossel'
+
 function Home() {
   const [posts, setPosts] = useState([]);
 
@@ -22,10 +24,11 @@ function Home() {
       setPosts(response.data.posts);
       console.log(posts);
     });
-  }, []);
+  }, [posts]); //apagar aqui caso teha erro
 
   return (
     <section>
+      <Carrossel></Carrossel>
       <div>
         <h1>Conheça as ações solidarias</h1>
         <p>Veja os detalhes de cada uma e participe</p>
