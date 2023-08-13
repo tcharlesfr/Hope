@@ -16,6 +16,7 @@ import { useParams, Link } from "react-router-dom";
 
 //hooks
 import useFlashMessage from "../../../hooks/useFlashMessage";
+import Navbar2 from "../../layout/Navbar";
 
 function PostDetails() {
   const [post, setPost] = useState({});
@@ -51,8 +52,9 @@ function PostDetails() {
   }
 
   return (
-    <Container>
-      <div className={styles.container}>
+    <>
+      <Navbar2></Navbar2>
+      <Container className={styles.container}>
         {post.name && (
           <Card >
             <div>
@@ -86,8 +88,8 @@ function PostDetails() {
             </Card.Body>
           </Card>
         )}
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
 

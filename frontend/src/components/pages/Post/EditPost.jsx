@@ -9,6 +9,7 @@ import PostForm from '../../form/PostForm';
 
 // hooks
 import useFlashMessage from '../../../hooks/useFlashMessage';
+import Navbar2 from '../../layout/Navbar';
 
 function EditPost() {
     const [post, setPost] = useState({})
@@ -64,6 +65,7 @@ function EditPost() {
 
     return (
       <section>
+        <Navbar2></Navbar2>
         <div className={styles.addpost_header}> 
             <h1>Eitando o Post: {post.name}</h1>
             <p>Depois da adição os dados serão atualizados no sistema</p>

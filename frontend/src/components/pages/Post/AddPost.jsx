@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import useFlashMessage from "../../../hooks/useFlashMessage";
 import PostForm from "../../form/PostForm";
 
+import Navbar from '../../layout/Navbar'
+import Message from '../../layout/Message'
+
 function AddPost() {
   const navigate = useNavigate();
   //pegar o token do local storage para fazer a adição
@@ -56,9 +59,11 @@ function AddPost() {
 
   return (
     <section className={styles.addpost_header}>
+      <Navbar></Navbar>
+      <Message></Message>
       <div>
-        <h1>Cadestre o post</h1>
-        <p>Despois ele ficara disponivel para adoção</p>
+        <h1>Cadestre a ação social</h1>
+        <p>Despois ela ficara disponivel para todos participarem</p>
       </div>
       {/* passando metodo registerPost para o filho e ele pode acessar por lá */}
       <PostForm handleSubmit={registerPost} btnText="Cadastrar Post" />

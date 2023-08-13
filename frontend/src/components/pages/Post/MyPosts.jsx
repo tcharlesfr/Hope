@@ -10,6 +10,8 @@ import styles from "./Dashboard.module.css";
 
 //hooks
 import useFlashMessage from "../../../hooks/useFlashMessage";
+import Navbar2 from "../../layout/Navbar";
+import Container from "react-bootstrap/esm/Container";
 
 function MyPosts() {
   const [posts, setPosts] = useState([]);
@@ -76,11 +78,12 @@ function MyPosts() {
 
   return (
     <section>
-      <div className={styles.postlist_header}>
-        <h1>Minhas postagens</h1>
-        <Link to="/post/add">Criar postagem</Link>
-      </div>
-      <div className={styles.postlist_container}>
+      <Navbar2></Navbar2>
+      <Container className={styles.postlist_container}>
+        <div className={styles.postlist_header}>
+          <h1>Minhas postagens</h1>
+          <Link to="/post/add">Criar postagem</Link>
+        </div>
         {posts.length > 0 &&
           posts.map((post) => (
             <div className={styles.postlist_row} key={post._id}>
@@ -93,7 +96,7 @@ function MyPosts() {
               <div className={styles.actions}>
                 {post.available ? (
                   <>
-                    {post.adopter && (
+                    {/* {post.adopter && (
                       <button
                         className={styles.conclude_btn}
                         onClick={() => {
@@ -102,9 +105,10 @@ function MyPosts() {
                       >
                         Concluir adoção
                       </button>
-                    )}
+                    )} */}
                     <Link to={`/post/edit/${post._id}`}>Editar</Link>
-                    <button className={styles.actions_red}
+                    <button
+                      className={styles.actions_red}
                       onClick={() => {
                         removePost(post._id);
                       }}
@@ -119,7 +123,7 @@ function MyPosts() {
             </div>
           ))}
         {posts.length === 0 && <p>não há posts</p>}
-      </div>
+      </Container>
     </section>
   );
 }

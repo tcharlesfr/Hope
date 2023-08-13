@@ -21,15 +21,14 @@ import EditPost from "./components/pages/Post/EditPost";
 import MyAdoptions from "./components/pages/Post/MyAdoptions";
 // import NavbarTeste from "./components/layout/NavbarTeste";
 // import Carrossel from './components/layout/Carrossel'
-import Carrossel from "../src/components/layout/Carrossel";
+// import Carrossel from "../src/components/layout/Carrossel";
 
 function App() {
   return (
     <Router>
       <UserProvider>
-        <Navbar />
-        <Message />
-        <Container>
+        {/* <Message /> */}
+        <section>          
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -41,7 +40,7 @@ function App() {
             <Route path="/post/myadoptions" element={<MyAdoptions />} />
             <Route path="/post/:id" element={<PostDetails />} />
           </Routes>
-        </Container>
+        </section>
         <Footer />
       </UserProvider>
     </Router>

@@ -76,10 +76,11 @@ function PostForm({ handleSubmit, postData, btnText }) {
         text="Descrição do Post"
         type="text"
         name="age"
-        placeholder="Digite a idade"
+        placeholder="Digite a descrição da"
         handleOnChange={handleChange}
         value={post.age || ""}
       />
+      
       <Input
         text="Formas de ajudar"
         type="number"
@@ -88,9 +89,11 @@ function PostForm({ handleSubmit, postData, btnText }) {
         handleOnChange={handleChange}
         value={post.weight || ""}
       />
+      
+      
       <Select
         name="color"
-        text="Selecione a cor"
+        text="teste"
         options={colors}
         handleOnChange={handleColor}
         value={post.color || ""}

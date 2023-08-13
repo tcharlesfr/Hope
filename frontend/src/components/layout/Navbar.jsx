@@ -8,8 +8,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 // import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import Logo from "../../assets/img/logohope.png";
-import LogoUser from "../../assets/img/pessoa.png";
+import Logo from "../../assets/img/logobranco.png";
+// import LogoUser from "../../assets/img/pessoa.png";
 
 import { useContext } from "react";
 import { useState, useEffect } from "react";
@@ -21,25 +21,25 @@ function Navbar2() {
   //pega o contexto que tem o acesso
   const { authenticated, logout } = useContext(Context);
 
-  //pegar o token para pegar os dados do usuario
-  // const [token] = useState(localStorage.getItem("token") || "");
-  // const [user, setUser] = useState({});
+  // pegar o token para pegar os dados do usuario
+  const [token] = useState(localStorage.getItem("token") || "");
+  const [user, setUser] = useState({});
 
 
-  // useEffect(() => {
-  //   //checar o usuario
-  //   token &&
-  //     api
-  //       .get("/users/checkuser", {
-  //         headers: {
-  //           //garantindo que o token vai ser enviado da forma correta
-  //           Authorization: `Bearer ${JSON.parse(token)}`,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         setUser(response.data);
-  //       });
-  // }, [token]);
+  useEffect(() => {
+    //checar o usuario
+    
+      token && api
+        .get("/users/checkuser", {
+          headers: {
+            //garantindo que o token vai ser enviado da forma correta
+            Authorization: `Bearer ${JSON.parse(token)}`,
+          },
+        })
+        .then((response) => {
+          setUser(response.data);
+        });
+  }, [token]);
 
   return (
     <Navbar bg="primary" data-bs-theme="dark">
@@ -47,7 +47,7 @@ function Navbar2() {
         <Navbar.Brand href="/">
           <div className={styles.navbar_logo}>
             <img src={Logo} alt="logo" />
-            <span>Hope</span>
+            
           </div>
         </Navbar.Brand>
 
@@ -58,16 +58,14 @@ function Navbar2() {
             {authenticated ? (
               <>
                 <div className={styles.navbar_logo_user}>
-                  <img src={LogoUser} alt={"logo"} />
+                  <img src={ `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={"logo"} />
                 </div>
 
                 <NavDropdown
-                  title={"perfil"}
+                  title={user.name}
                   id="basic-nav-dropdown"
                 >
-                  {/* <NavDropdown.Item>
-                    {user.name}
-                  </NavDropdown.Item> */}
+
                   <NavDropdown.Item href="/post/myposts">
                     Minhas Postagen
                   </NavDropdown.Item>
