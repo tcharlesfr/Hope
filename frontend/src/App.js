@@ -21,12 +21,12 @@ import EditPost from "./components/pages/Post/EditPost";
 import MyAdoptions from "./components/pages/Post/MyAdoptions";
 // import NavbarTeste from "./components/layout/NavbarTeste";
 // import Carrossel from './components/layout/Carrossel'
-
+import Carrossel from "../src/components/layout/Carrossel";
 
 function App() {
   return (
     <Router>
-      <UserProvider>       
+      <UserProvider>
         <Navbar />
         <Message />
         <Container>

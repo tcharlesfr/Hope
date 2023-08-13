@@ -12,3 +12,14 @@
     margin-bottom: 1.2em;
 }
 
+.header {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0.5em;
+    background-color: #3669f6;
+    color: white;
+    border-radius: 10px;
+}
+.carrossel{
+    border-radius: 10px;
+}

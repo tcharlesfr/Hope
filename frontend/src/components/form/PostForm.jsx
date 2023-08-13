@@ -88,13 +88,13 @@ function PostForm({ handleSubmit, postData, btnText }) {
         handleOnChange={handleChange}
         value={post.weight || ""}
       />
-      {/* <Select
+      <Select
         name="color"
         text="Selecione a cor"
         options={colors}
         handleOnChange={handleColor}
         value={post.color || ""}
-      /> */}
+      />
       <input type="submit" value={btnText} />
     </form>
   );
