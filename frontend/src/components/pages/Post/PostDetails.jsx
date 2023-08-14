@@ -64,6 +64,7 @@ function PostDetails() {
               {post.images.map((image, index) => ( 
                 <Carousel.Item>        
                 <Image
+                
                   className={styles.post_images}
                   rounded
                   src={`${process.env.REACT_APP_API}/images/posts/${image}`}
@@ -76,7 +77,9 @@ function PostDetails() {
             </div>
            
           </Card>
-          <Card style={{ width: "30rem", margin: "0.7em" }}>
+          <Card 
+          key={post._id}
+          style={{ width: "30rem", margin: "0.7em" }}>
              <Card.Body>
               <Card.Title>{post.name}</Card.Title>
               <Card.Text>
