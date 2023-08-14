@@ -27,8 +27,7 @@ function Navbar2() {
 
 
   useEffect(() => {
-    //checar o usuario
-    
+    //checar o usuario    
       token && api
         .get("/users/checkuser", {
           headers: {

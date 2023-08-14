@@ -2,8 +2,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Carousel from "react-bootstrap/Carousel";
 
 import Image from "react-bootstrap/Image";
 
@@ -17,6 +16,7 @@ import { useParams, Link } from "react-router-dom";
 //hooks
 import useFlashMessage from "../../../hooks/useFlashMessage";
 import Navbar2 from "../../layout/Navbar";
+import Message from "../../layout/Message";
 
 function PostDetails() {
   const [post, setPost] = useState({});
@@ -54,21 +54,30 @@ function PostDetails() {
   return (
     <>
       <Navbar2></Navbar2>
+      <Message></Message>
       <Container className={styles.container}>
         {post.name && (
-          <Card >
+          <>
+          <Card style={{ width: "19rem", margin: "0.7em", padding:'0 0 1em 0' }}>
             <div>
-              {post.images.map((image, index) => (
+            <Carousel fade data-bs-theme="dark">
+              {post.images.map((image, index) => ( 
+                <Carousel.Item>        
                 <Image
                   className={styles.post_images}
                   rounded
                   src={`${process.env.REACT_APP_API}/images/posts/${image}`}
                   alt={post.name}
                   key={index}
-                />
+                />        
+                </Carousel.Item>
               ))}
+              </Carousel>
             </div>
-            <Card.Body>
+           
+          </Card>
+          <Card style={{ width: "30rem", margin: "0.7em" }}>
+             <Card.Body>
               <Card.Title>{post.name}</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
@@ -87,8 +96,10 @@ function PostDetails() {
               )}
             </Card.Body>
           </Card>
+          
+          </>
         )}
-      </Container>
+      </Container>      
     </>
   );
 }

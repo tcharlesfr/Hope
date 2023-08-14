@@ -24,7 +24,6 @@ function Home() {
     //pegar todos os posts e setar na variavel
     api.get("/posts").then((response) => {
       setPosts(response.data.posts);
-      console.log(posts);
     });
   }, []); //apagar aqui caso teha erro
 
@@ -44,7 +43,7 @@ function Home() {
               <div className={styles.post_container}>
                 {posts.length > 0 &&
                   posts.map((post) => (
-                    <Card style={{ width: "19rem", margin: "0.7em 0" }}>
+                    <Card style={{ width: "19rem", margin: "0.5em" }}>
                       <div
                         style={{
                           backgroundImage: `url(${process.env.REACT_APP_API}/images/posts/${post.images[0]})`,
