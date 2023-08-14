@@ -16,7 +16,8 @@
 .header {
     text-align: center;
     margin: 1em 0;
-    padding: 0.5em;
+    padding-top: 0.4em;
+    padding-bottom: 1px;
     background-color: #3669f6;
     color: white;
     border-radius: 10px;

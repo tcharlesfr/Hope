@@ -62,7 +62,7 @@ function AddPost() {
       <Navbar></Navbar>
       <Message></Message>
       <div>
-        <h1>Cadestre a ação social</h1>
+        <h1>Cadastre uma ação social</h1>
         <p>Despois ela ficara disponivel para todos participarem</p>
       </div>
       {/* passando metodo registerPost para o filho e ele pode acessar por lá */}

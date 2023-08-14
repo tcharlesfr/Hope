@@ -9,6 +9,7 @@ import Input from "../../form/Input";
 import useFlashMessage from "../../../hooks/useFlashMessage";
 import RoundedImage from "../../layout/RoundedImage";
 import Navbar2 from "../../layout/Navbar";
+import Message from "../../layout/Message";
 
 
 function Profile() {
@@ -78,6 +79,7 @@ function Profile() {
   return (
     <section>
       <Navbar2></Navbar2>
+      <Message></Message>
       <div className={styles.profile_header}>
         <h1>Perfil</h1>
         {/* se tiver alguma imagem ou preview imprime 

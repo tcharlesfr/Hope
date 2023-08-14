@@ -35,7 +35,7 @@ function Home() {
         <Carrossel className={styles.carrossel}></Carrossel>
         <Container>
           <div className={styles.header}>
-            <h1>Conheça as ações solidarias</h1>
+            <h3>Conheça as ações solidarias</h3>
             <p>Veja os detalhes de cada uma e participe</p>
           </div>
           <Row>
