@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 // import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import Logo from "../../assets/img/logohope.png";
+import Logo from "../../assets/img/logobranco.png";
 // import LogoUser from "../../assets/img/pessoa.png";
 
 import { useContext } from "react";

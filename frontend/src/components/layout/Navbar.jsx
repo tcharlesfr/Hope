@@ -25,10 +25,10 @@ function Navbar2() {
   const [token] = useState(localStorage.getItem("token") || "");
   const [user, setUser] = useState({});
 
-
   useEffect(() => {
-    //checar o usuario    
-      token && api
+    //checar o usuario
+    token &&
+      api
         .get("/users/checkuser", {
           headers: {
             //garantindo que o token vai ser enviado da forma correta
@@ -46,32 +46,30 @@ function Navbar2() {
         <Navbar.Brand href="/">
           <div className={styles.navbar_logo}>
             <img src={Logo} alt="logo" />
-            
           </div>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar id="basic-navbar-nav">
           <Nav className="me-auto">
-            
             {authenticated ? (
               <>
                 <div className={styles.navbar_logo_user}>
-                  <img src={ `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={"logo"} />
+                  <img
+                    src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
+                    alt={"logo"}
+                  />
                 </div>
-
-                <NavDropdown
-                  title={user.name}
-                  id="basic-nav-dropdown"
-                >
-
+                <NavDropdown title={user.name} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/post/myposts">
                     Minhas Postagen
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/post/myadoptions">
+                    Meus contatos
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/user/profile">
                     Editar Perfil
                   </NavDropdown.Item>
-
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
                 </NavDropdown>

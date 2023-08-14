@@ -242,7 +242,7 @@ module.exports = class PostController {
     if (post.user._id.toString() === user._id.toString()) {
       res
         .status(422)
-        .json({ message: "você não pode agendar visita com seu proprio post" });
+        .json({ message: "você não pode entrar em contato com você mesmo" });
       return;
     }
 
@@ -251,7 +251,7 @@ module.exports = class PostController {
       if (post.adopter._id.equals(user._id)) {
         res
           .status(422)
-          .json({ message: "você já agendou uma visita com este post" });
+          .json({ message: "você já solicitou o contato, visualize no perfil" });
         return;
       }
     }

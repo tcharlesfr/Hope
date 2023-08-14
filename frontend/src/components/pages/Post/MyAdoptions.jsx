@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import styles from "./Dashboard.module.css";
 
 import RoundedImage from "../../layout/RoundedImage";
+import Navbar2 from "../../layout/Navbar";
+import Message from "../../layout/Message";
+import Container from "react-bootstrap/esm/Container";
 
 function MyAdoptions() {
   const [posts, setPosts] = useState([]);
@@ -24,7 +27,9 @@ function MyAdoptions() {
 
   return (
     <section>
-      <div className={styles.postlist_container}>
+      <Navbar2></Navbar2>
+      <Message></Message>
+      <Container className={styles.postlist_container}>
         {posts.length > 0 &&
           posts.map((post) => (
             <div className={styles.postlist_row} key={post._id}>
@@ -33,28 +38,22 @@ function MyAdoptions() {
                 alt={post.name}
                 width="px75"
               />
-              <span className="Bold">{post.name}</span>
-              <div className={styles.contacts}>
-                <p>
-                  <span className="bold">Ligue para: </span>
-                  {post.user.phone}
-                </p>
-                <p>
-                  <span className="bold">Fale com: </span>
-                  {post.user.name}
-                </p>
+              <div>
+                <h5 className="Bold">{post.name}</h5>
+                <p className="bold">Fale com: {post.user.name} <br></br>Ligue para: {post.user.phone}</p>
+                <p className="bold"></p>
               </div>
-              <div className={styles.actions}>
+              {/* <div className={styles.actions}>
                 {post.available ? (
                   <p>Adoção em processo</p>
                 ) : (
                   <p>Parabéns por concluir a adoção</p>
                 )}
-              </div>
+              </div> */}
             </div>
           ))}
-        {posts.length === 0 && <p>Ainda não há adoções de Posts</p>}
-      </div>
+        {posts.length === 0 && <p>Ainda não há ações</p>}
+      </Container>
     </section>
   );
 }
