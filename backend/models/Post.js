@@ -10,11 +10,11 @@ const Post = mongoose.model(
         required: true,
       },
       age: {
-        type: Number,
+        type: String,
         required: true,
       },
       weight: {
-        type: Number,
+        type: String,
         required: true,
       },
       color: {

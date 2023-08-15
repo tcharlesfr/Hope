@@ -52,6 +52,9 @@ function Navbar2() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar id="basic-navbar-nav">
           <Nav className="me-auto">
+            {user.role === 'admin' && (
+              <Nav.Link href="/admin/posts">Gerência</Nav.Link>
+            )}
             {authenticated ? (
               <>
                 <div className={styles.navbar_logo_user}>
@@ -64,6 +67,7 @@ function Navbar2() {
                   <NavDropdown.Item href="/post/myposts">
                     Minhas Postagen
                   </NavDropdown.Item>
+                  
                   <NavDropdown.Item href="/post/myadoptions">
                     Meus contatos
                   </NavDropdown.Item>

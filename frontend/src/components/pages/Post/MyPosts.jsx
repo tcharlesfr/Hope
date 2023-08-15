@@ -12,11 +12,18 @@ import styles from "./Dashboard.module.css";
 import useFlashMessage from "../../../hooks/useFlashMessage";
 import Navbar2 from "../../layout/Navbar";
 import Container from "react-bootstrap/esm/Container";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function MyPosts() {
   const [posts, setPosts] = useState([]);
   const [token] = useState(localStorage.getItem("token") || "");
   const { setFlashMessage } = useFlashMessage();
+
+  //modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   //chamar a api, enviando o token de autorização
   useEffect(() => {
@@ -94,9 +101,44 @@ function MyPosts() {
               />
               <span className="Bold">{post.name}</span>
               <div className={styles.actions}>
-                {post.available ? (
-                  <>
-                    {/* {post.adopter && (
+                <button
+                  className={styles.actions_red}
+                  onClick={() => {
+                    removePost(post._id);
+                  }}
+                >
+                  Excluir
+                </button>
+                {/* <>
+                  <Button variant="primary" onClick={handleShow}>
+                    Excluir
+                  </Button>
+
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Excluir</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Você tem certeza que deseja excluir?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Fechar
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          removePost(post._id);
+                        }}
+                      >
+                        Excluir
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </> */}
+                {/* {post.available ? (
+                  <> */}
+                {/* {post.adopter && (
                       <button
                         className={styles.conclude_btn}
                         onClick={() => {
@@ -106,19 +148,12 @@ function MyPosts() {
                         Concluir adoção
                       </button>
                     )} */}
-                    <Link to={`/post/edit/${post._id}`}>Editar</Link>
-                    <button
-                      className={styles.actions_red}
-                      onClick={() => {
-                        removePost(post._id);
-                      }}
-                    >
-                      Excluir
-                    </button>
-                  </>
+                <Link to={`/post/edit/${post._id}`}>Editar</Link>
+
+                {/* </>
                 ) : (
                   <p>Post já adotado</p>
-                )}
+                )} */}
               </div>
             </div>
           ))}

@@ -72,6 +72,7 @@ module.exports = class UserController {
       email: email,
       phone: phone,
       password: passwordHash,
+      role: 'user'
     });
 
     try {

@@ -83,21 +83,19 @@ function PostForm({ handleSubmit, postData, btnText }) {
       
       <Input
         text="Formas de ajudar"
-        type="number"
+        type="text"
         name="weight"
         placeholder="Digite as formas de ajuda"
         handleOnChange={handleChange}
         value={post.weight || ""}
       />
-      
-      
-      <Select
+      {/* <Select
         name="color"
         text="teste"
         options={colors}
         handleOnChange={handleColor}
         value={post.color || ""}
-      />
+      /> */}
       <input type="submit" value={btnText} />
     </form>
   );

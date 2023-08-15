@@ -28,10 +28,10 @@ function Navbar2() {
   return (
     <Navbar bg="primary" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand href='/'>
           <div className={styles.navbar_logo}>
             <img src={Logo} alt="logo" />
-            <span>Hope</span>
+            {/* <span>Hope</span> */}
           </div>
         </Navbar.Brand>
 

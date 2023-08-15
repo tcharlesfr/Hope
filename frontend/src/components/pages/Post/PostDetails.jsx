@@ -58,51 +58,48 @@ function PostDetails() {
       <Container className={styles.container}>
         {post.name && (
           <>
-          <Card style={{ width: "19rem", margin: "0.7em", padding:'0 0 1em 0' }}>
-            <div>
-            <Carousel fade data-bs-theme="dark">
-              {post.images.map((image, index) => ( 
-                <Carousel.Item>        
-                <Image
-                
-                  className={styles.post_images}
-                  rounded
-                  src={`${process.env.REACT_APP_API}/images/posts/${image}`}
-                  alt={post.name}
-                  key={index}
-                />        
-                </Carousel.Item>
-              ))}
-              </Carousel>
-            </div>
-           
-          </Card>
-          <Card 
-          key={post._id}
-          style={{ width: "30rem", margin: "0.7em" }}>
-             <Card.Body>
-              <Card.Title>{post.name}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-                {post.weight}kg
-              </Card.Text>
-              {token ? (
-                <Button variant="primary" onClick={schedule}>
-                  Entrar em contato
-                </Button>
-              ) : (
-                <p>
-                  Você precisa<Link to="/register" style={{ color: 'blue'}}>criar uma conta</Link>para
-                  entrar em contato
-                </p>
-              )}
-            </Card.Body>
-          </Card>
-          
+            <Card
+              style={{ width: "19rem", margin: "0.7em", padding: "0 0 1em 0" }}
+            >
+              <div>
+                <Carousel fade data-bs-theme="dark">
+                  {post.images.map((image, index) => (
+                    <Carousel.Item>
+                      <Image
+                        className={styles.post_images}
+                        rounded
+                        src={`${process.env.REACT_APP_API}/images/posts/${image}`}
+                        alt={post.name}
+                        key={index}
+                      />
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
+              </div>
+            </Card>
+            <Card key={post._id} style={{ width: "30rem", margin: "0.7em" }}>
+              <Card.Body>
+                <Card.Title>{post.name}</Card.Title>
+                <Card.Text><span style={{fontWeight: 'bold'}}>Descrição: </span> {post.age}</Card.Text>
+                <Card.Text><span style={{fontWeight: 'bold'}}>Formas de ajudar: </span>{post.weight}</Card.Text>
+                {token ? (
+                  <Button variant="primary" onClick={schedule}>
+                    Entrar em contato
+                  </Button>
+                ) : (
+                  <p>
+                    Você precisa
+                    <Link to="/register" style={{ color: "blue" }}>
+                      criar uma conta
+                    </Link>
+                    para entrar em contato
+                  </p>
+                )}
+              </Card.Body>
+            </Card>
           </>
         )}
-      </Container>      
+      </Container>
     </>
   );
 }

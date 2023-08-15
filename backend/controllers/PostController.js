@@ -30,10 +30,10 @@ module.exports = class PostController {
       res.status(422).json({ message: "o peso é obrigatorio" });
       return;
     }
-    if (!color) {
-      res.status(422).json({ message: "a cor é obrigatoria" });
-      return;
-    }
+    // if (!color) {
+    //   res.status(422).json({ message: "a cor é obrigatoria" });
+    //   return;
+    // }
     if (images.length === 0) {
       res.status(422).json({ message: "a imagem é obrigatoria" });
       return;
@@ -143,7 +143,9 @@ module.exports = class PostController {
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    if (post.user._id.toString() !== user._id.toString()) {
+    // if (user.role === 'admin')
+
+    if (post.user._id.toString() !== user._id.toString() && user.role !== 'admin') {
       res
         .status(422)
         .json({ message: "Houve um problema em processar a sua solicitação" });
