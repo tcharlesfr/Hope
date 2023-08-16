@@ -41,26 +41,33 @@ function MyPosts() {
   async function removePost(id) {
     let msgType = "success";
 
-    const data = await api
-      .delete(`/posts/${id}`, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(token)}`,
-        },
-      })
-      .then((response) => {
-        //excluir do front
-        //filtrando o post excluido dos demais
-        //desta forma poupa recurso do backend
-        const updatedPosts = posts.filter((post) => post._id !== id);
-        setPosts(updatedPosts);
-        return response.data;
-      })
-      .catch((err) => {
-        msgType = "error";
-        return err.response.data;
-      });
+    // eslint-disable-next-line no-restricted-globals
+    var resultado = confirm("Deseja excluir o item ?");
+    if (resultado === true) {
+      alert("a postagem foi excluída!");
+      const data = await api
+        .delete(`/posts/${id}`, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`,
+          },
+        })
+        .then((response) => {
+          //excluir do front
+          //filtrando o post excluido dos demais
+          //desta forma poupa recurso do backend
+          const updatedPosts = posts.filter((post) => post._id !== id);
+          setPosts(updatedPosts);
+          return response.data;
+        })
+        .catch((err) => {
+          msgType = "error";
+          return err.response.data;
+        });
 
-    setFlashMessage(data.message, msgType);
+      setFlashMessage(data.message, msgType);
+    } else {
+      alert("Você desistiu de excluir a postagem");
+    }
   }
 
   async function concludeAdoption(id) {
@@ -108,7 +115,7 @@ function MyPosts() {
                   }}
                 >
                   Excluir
-                </button>                
+                </button>
                 {/* {post.available ? (
                   <> */}
                 {/* {post.adopter && (
@@ -122,8 +129,6 @@ function MyPosts() {
                       </button>
                     )} */}
                 <Link to={`/post/edit/${post._id}`}>Editar</Link>
-
-                
               </div>
             </div>
           ))}
