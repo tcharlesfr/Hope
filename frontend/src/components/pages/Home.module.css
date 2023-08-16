@@ -25,3 +25,7 @@
 .carrossel{
     border-radius: 10px;
 }
+
+.description {
+    min-height: 4.5em;
+}
