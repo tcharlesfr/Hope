@@ -58,7 +58,7 @@ function EditPost() {
             return response.data
         }).catch((err) => {
             msgType = 'error'
-            return err.response.dataz
+            return err.response.data
         })
 
         setFlashMessage(data.message, msgType)

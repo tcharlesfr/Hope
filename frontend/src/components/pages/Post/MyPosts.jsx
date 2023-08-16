@@ -108,34 +108,7 @@ function MyPosts() {
                   }}
                 >
                   Excluir
-                </button>
-                {/* <>
-                  <Button variant="primary" onClick={handleShow}>
-                    Excluir
-                  </Button>
-
-                  <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Excluir</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      Você tem certeza que deseja excluir?
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Fechar
-                      </Button>
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          removePost(post._id);
-                        }}
-                      >
-                        Excluir
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </> */}
+                </button>                
                 {/* {post.available ? (
                   <> */}
                 {/* {post.adopter && (
@@ -150,10 +123,7 @@ function MyPosts() {
                     )} */}
                 <Link to={`/post/edit/${post._id}`}>Editar</Link>
 
-                {/* </>
-                ) : (
-                  <p>Post já adotado</p>
-                )} */}
+                
               </div>
             </div>
           ))}

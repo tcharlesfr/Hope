@@ -160,7 +160,7 @@ module.exports = class PostController {
   static async updatePost(req, res) {
     const id = req.params.id;
 
-    const { name, age, weight, color, available } = req.body;
+    const { name, age, weight, available } = req.body;
 
     const images = req.files;
 
@@ -206,14 +206,14 @@ module.exports = class PostController {
       updatedData.weight = weight;
     }
 
-    if (!color) {
-      res.status(422).json({ message: "a cor é obrigatoria" });
-      return;
-    } else {
-      updatedData.color = color;
-    }
+    // if (!color) {
+    //   res.status(422).json({ message: "a cor é obrigatoria" });
+    //   return;
+    // } else {
+    //   updatedData.color = color;
+    // }
 
-    if (images.length>0){
+    if (images.length > 0){
       updatedData.images = [];
       images.map((image) => {
         updatedData.images.push(image.filename);

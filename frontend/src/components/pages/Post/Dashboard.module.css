@@ -30,7 +30,7 @@
 .postlist_container {
     display: flex;
     flex-direction: column;
-    min-height: 23em;
+    min-height: 24em;
 }
 
 .postlist_row {

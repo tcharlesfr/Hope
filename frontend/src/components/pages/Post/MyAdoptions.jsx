@@ -33,7 +33,7 @@ function MyAdoptions() {
       <Container className={styles.postlist_container}>
       <div className={styles.postlist_header}>
           <h1>Meus contatos</h1>
-          <p>Aqui você pode entrar em contato com as pessoas</p>
+          {/* <p>Aqui você pode entrar em contato com as pessoas</p> */}
           <Link to="/">Ações sociais</Link>          
         </div>
         {posts.length > 0 &&
