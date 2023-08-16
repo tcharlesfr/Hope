@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
 }
 
 .postlist_header h1 {
@@ -19,7 +19,7 @@
     padding: 0.5em 0.8em;
     border-radius: 5px;
     border: 2px solid #16479d;
-    margin-top: 3em;
+    margin: 3em 0;
 }
 
 .postlist_header a:hover {
@@ -54,7 +54,20 @@
     margin-left: auto;
 }
 
-.actions a,
+.actions a {
+    
+}
+
+.edit button:hover {
+    background-color: green;
+    color: #fff;
+}
+
+.actions a:hover{
+    background-color: red;
+    color: #fff;
+}
+
 .actions button {
     text-decoration: none;
     background-color: #fff;
@@ -62,20 +75,17 @@
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s;
-    padding:7px 12px;
+    padding:7px;
     border-radius: 5px;
     border: 2px solid #16479d;
     font-size: 12px;
-    margin-left: 1em;
+    margin: 0.3em;
 }
-
-.actions a:hover,
 .actions button:hover {
     background-color: red;
     color: #fff;
 }
 
-.actions a:hover,
 .actions_red button:hover {
     background-color: #16479d;
     color: #fff;

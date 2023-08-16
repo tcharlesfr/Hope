@@ -4,6 +4,10 @@
     
 }
 
+.drop {
+    text-align: right;
+}
+
 .navbar_logo {
     display: flex;
     align-items: center;

@@ -63,7 +63,7 @@ function Navbar2() {
                     alt={"logo"}
                   />
                 </div>
-                <NavDropdown title={user.name} id="basic-nav-dropdown">
+                <NavDropdown title={user.name} id="basic-nav-dropdown" className={styles.drop}>
                   <NavDropdown.Item href="/post/myposts">
                     Minhas Postagen
                   </NavDropdown.Item>
