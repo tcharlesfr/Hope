@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 // import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
@@ -41,7 +43,7 @@ function Navbar2() {
   }, [token]);
 
   return (
-    <Navbar bg="primary" data-bs-theme="dark">
+    <Navbar bg="primary">
       <Container>
         <Navbar.Brand href="/">
           <div className={styles.navbar_logo}>
@@ -49,34 +51,38 @@ function Navbar2() {
           </div>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar id="basic-navbar-nav">
           <Nav className="me-auto">
-            {user.role === 'admin' && (
+            {user.role === "admin" && (
               <Nav.Link href="/admin/posts">Gerência</Nav.Link>
             )}
             {authenticated ? (
               <>
-                <div className={styles.navbar_logo_user}>
-                  <img
-                    src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
-                    alt={"logo"}
-                  />
-                </div>
-                <NavDropdown title={user.name} id="basic-nav-dropdown" className={styles.drop}>
-                  <NavDropdown.Item href="/post/myposts">
+                <DropdownButton
+                  drop="start"
+                  id="dropdown-basic-button"
+                  title={user.name || 'perfil'}
+                >
+                  <Dropdown.Item href="/post/myposts">
+                    <div className={styles.navbar_logo_user}>
+                      <img
+                        src={`${process.env.REACT_APP_API}/images/users/${user.image}`}
+                        alt={"logo"}
+                      />
+                    </div>
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/post/myposts">
                     Minhas Postagen
-                  </NavDropdown.Item>
-                  
-                  <NavDropdown.Item href="/post/myadoptions">
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/post/myadoptions">
                     Meus contatos
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/user/profile">
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/user/profile">
                     Editar Perfil
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
-                </NavDropdown>
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={logout}>Sair</Dropdown.Item>
+                </DropdownButton>
               </>
             ) : (
               <>

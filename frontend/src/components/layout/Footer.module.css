@@ -3,6 +3,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    background-color: #eeeeee;
     color: #444;
+}
+.footer a {    
+    color: #444;
+}
+
+.footer span {    
+    color: #444;
+    margin-right: 10px;
+    font-size: bold;
+}
+
+.footer a img {
+    color: #444;
+    width: 20px;
+    margin: 0 5px;
 }

@@ -1,14 +1,26 @@
 import styles from "./Footer.module.css";
 
+import linkedin from '../../assets/img/linkedin.png'
+import instagram from '../../assets/img/instagram.png'
+
 function Footer() {
   return (
     <footer className={styles.footer}>
       <p>
-        <span className="bold">Hope</span> &copy; 2023
-        <a href="https://www.linkedin.com/in/tcharles-fernando-rodrigues-a4b36020a/">Linkedin</a>
-      <a href="https://www.instagram.com/">Instagram</a>
+        <span className="bold">Hope &copy; 2023</span> 
+        <a 
+          target="blank"
+          href="https://www.linkedin.com/in/tcharles-fernando-rodrigues-a4b36020a/">
+          <img src={linkedin} alt="" />
+          Linkedin
+        </a>
+        <a 
+          
+          target="blank"
+          href="https://www.instagram.com/">
+          <img src={instagram} alt="" />
+          Instagram</a>
       </p>
-      
     </footer>
   );
 }
