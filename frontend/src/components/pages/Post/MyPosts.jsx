@@ -108,19 +108,8 @@ function MyPosts() {
                 width="px75"
               />
               <span className="Bold">{post.name}</span>
+              {!post.available ? (<span>Aguardando ser aprovado</span>):('')}
               <div className={styles.actions}>
-                {/* {post.available ? (
-                  <> */}
-                {/* {post.adopter && (
-                      <button
-                        className={styles.conclude_btn}
-                        onClick={() => {
-                          concludeAdoption(post._id);
-                        }}
-                      >
-                        Concluir adoção
-                      </button>
-                    )} */}
                 <button
                 // className={styles.edit}
                   onClick={() => {

@@ -54,15 +54,12 @@ function Navbar2() {
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar id="basic-navbar-nav">
           <Nav className="me-auto">
-            {user.role === "admin" && (
-              <Nav.Link href="/admin/posts">Gerência</Nav.Link>
-            )}
             {authenticated ? (
               <>
                 <DropdownButton
                   drop="start"
                   id="dropdown-basic-button"
-                  title={user.name || 'perfil'}
+                  title={user.name || "perfil"}
                 >
                   <Dropdown.Item href="/post/myposts">
                     <div className={styles.navbar_logo_user}>
@@ -72,6 +69,10 @@ function Navbar2() {
                       />
                     </div>
                   </Dropdown.Item>
+                  {user.role === "admin" && (
+                    <Dropdown.Item href="/admin/posts">Gerência</Dropdown.Item>
+                  )}
+
                   <Dropdown.Item href="/post/myposts">
                     Minhas Postagen
                   </Dropdown.Item>

@@ -8,12 +8,12 @@ const ObjectId = require("mongoose").Types.ObjectId; //verificar se o id é vali
 module.exports = class PostController {
   //criar post
   static async create(req, res) {
-    const { name, age, weight, color } = req.body;
+    const { name, age, weight } = req.body;
 
     const images = req.files;
 
     // setar como disponivel logo quando criado
-    const available = true;
+    const available = false;
 
     // upload de imagens
 
@@ -48,7 +48,6 @@ module.exports = class PostController {
       name,
       age,
       weight,
-      color,
       available,
       images: [],
       user: {
@@ -75,6 +74,12 @@ module.exports = class PostController {
 
   static async getAll(req, res) {
     const posts = await Post.find().sort("-createdAt");
+
+    res.status(200).json({ posts: posts });
+  }
+
+  static async getAllHome(req, res) {
+    const posts = await Post.find({ "available": true }).sort("-createdAt");
 
     res.status(200).json({ posts: posts });
   }
@@ -279,7 +284,7 @@ module.exports = class PostController {
     const post = await Post.findOne({ _id: id });
 
     if (!post) {
-      res.status(404).json({ message: "Post não encontrado" });
+      res.status(404).json({ message: "Postagem não encontrada" });
       return;
     }
 
@@ -288,20 +293,20 @@ module.exports = class PostController {
     const user = await getUserByToken(token);
 
     //post.user._id.equals() //outra forma
-    if (post.user._id.toString() !== user._id.toString()) {
+    if (post.user._id.toString() !== user._id.toString() && user.role !== 'admin') {
       res
         .status(422)
-        .json({ message: "você não pode agendar visita com seu proprio post" });
+        .json({ message: "você não pode entrar em contato com você mesmo" });
       return;
     }
 
     // trocando a disponibilidade do post
-    post.available = false;
+    post.available = true;
 
     await Post.findByIdAndUpdate(id, post);
 
     res.status(200).json({
-      message: "Adoção concluida com sucesso", //editado já
+      message: "Postagem publicada com sucesso", //editado já
     });
   }
 };

@@ -15,7 +15,8 @@ router.post(
 );
 
 // rota publica
-router.get("/", PostController.getAll);
+router.get("/", PostController.getAllHome);
+router.get("/admin", PostController.getAll);
 //privada
 router.get("/myposts", verifyToken, PostController.getAllUserPosts);
 router.get("/myadoptions", verifyToken, PostController.getAllUserAdoptions);
