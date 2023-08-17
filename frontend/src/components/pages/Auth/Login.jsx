@@ -6,7 +6,7 @@ import styles from "../../form/Form.module.css";
 import { Context } from "../../../context/UserContext";
 import { Link } from "react-router-dom";
 import Navbar2 from "../../layout/NavbarDeslogado";
-import Message from '../../layout/Message'
+import Message from "../../layout/Message";
 
 function Login() {
   const [user, setUser] = useState({});
@@ -47,7 +47,7 @@ function Login() {
           <input type="submit" value="Entrar" />
         </form>
         <p>
-          <Link to="/register">Não tem conta? Clique aqui</Link>
+          Não tem conta?<Link to="/register">Clique aqui</Link>
         </p>
       </section>
     </>

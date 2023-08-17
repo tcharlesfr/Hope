@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 // contexto
 import { Context } from "../../../context/UserContext";
 import Navbar2 from "../../layout/NavbarDeslogado";
-import Message from '../../layout/Message'
-
+import Message from "../../layout/Message";
 
 function Register() {
   const [user, setUser] = useState({});
@@ -25,8 +24,8 @@ function Register() {
 
   return (
     <>
-    <Navbar2></Navbar2>
-    <Message></Message>
+      <Navbar2></Navbar2>
+      <Message></Message>
       <section className={styles.form_container}>
         <h1>Registrar</h1>
         <form onSubmit={handleSubmit}>
@@ -67,8 +66,10 @@ function Register() {
           />
           <Input type="submit" value="Cadastrar" />
         </form>
+
         <p>
-          <Link to="/login">Já tem conta? Clique aqui</Link>
+          Já tem conta?
+          <Link to="/login">Clique aqui</Link>
         </p>
       </section>
     </>
