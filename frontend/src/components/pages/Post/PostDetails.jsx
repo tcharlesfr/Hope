@@ -59,7 +59,7 @@ function PostDetails() {
         {post.name && (
           <>
             <Card
-              style={{ width: "19rem", margin: "0.7em", padding: "0 0 1em 0" }}
+              style={{ width: "25rem", margin: "1em 0.3em", padding: "0 0 1em 0" }}
             >
               <div>
                 <Carousel fade data-bs-theme="dark">
@@ -77,8 +77,8 @@ function PostDetails() {
                 </Carousel>
               </div>
             </Card>
-            <Card key={post._id} style={{ width: "30rem", margin: "0.7em" }}>
-              <Card.Body>
+            <Card key={post._id} style={{ width: "30rem", margin: "1em 0" }}>
+              <Card.Body className={styles.descricao}>
                 <Card.Title>{post.name}</Card.Title>
                 <Card.Text><span style={{fontWeight: 'bold'}}>Descrição: </span> {post.age}</Card.Text>
                 <Card.Text><span style={{fontWeight: 'bold'}}>Formas de ajudar: </span>{post.weight}</Card.Text>
