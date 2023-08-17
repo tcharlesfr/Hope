@@ -37,10 +37,10 @@ function Navbar2() {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto" >
             <>
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/register">Cadastrar</Nav.Link>
+              <Nav.Link style={{color: 'white'}} href="/login">Login</Nav.Link>
+              <Nav.Link style={{color: 'white'}} href="/register">Cadastrar</Nav.Link>
             </>
           </Nav>
         </Navbar>

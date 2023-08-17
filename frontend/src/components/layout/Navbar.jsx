@@ -87,8 +87,8 @@ function Navbar2() {
               </>
             ) : (
               <>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/register">Cadastrar</Nav.Link>
+                <Nav.Link style={{color: 'white'}} href="/login">Login</Nav.Link>
+                <Nav.Link style={{color: 'white'}} href="/register">Cadastrar</Nav.Link>
               </>
             )}
           </Nav>
