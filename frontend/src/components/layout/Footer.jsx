@@ -9,7 +9,7 @@ function Footer() {
     <footer className={styles.footer}>
       {/* <img src={hopeLogo} alt="" /> */}
       <p>
-        <span className="bold">Hope &copy; 2023</span> 
+        <span className="bold">Hope &copy; 2024</span> 
         <a 
           target="blank"
           href="https://www.linkedin.com/in/tcharles-fernando-rodrigues-a4b36020a/">

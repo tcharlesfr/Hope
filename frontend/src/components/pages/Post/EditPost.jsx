@@ -69,8 +69,8 @@ function EditPost() {
         <Navbar2></Navbar2>
         <Message></Message>
         <div className={styles.addpost_header}> 
-            <h1>Eitando o Post: {post.name}</h1>
-            <p>Depois da adição os dados serão atualizados no sistema</p>
+            <h1>Editar Postagem: {post.name}</h1>
+            <p>Depois da edição os dados serão atualizados no sistema</p>
         </div>
         {//
         post.name && (

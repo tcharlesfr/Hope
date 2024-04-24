@@ -273,7 +273,7 @@ module.exports = class PostController {
     await Post.findByIdAndUpdate(id, post);
 
     res.status(200).json({
-      message: `A visita foi agendada com sucesso, entre em contato com ${post.user.name} pelo telefone ${post.user.phone}`,
+      message: `Contato adicionado com sucesso, entre em contato com ${post.user.name} pelo telefone ${post.user.phone}`,
     });
   }
 
