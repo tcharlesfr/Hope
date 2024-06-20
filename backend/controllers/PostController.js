@@ -6,7 +6,7 @@ const getUserByToken = require("../helpers/get-user-by-token");
 const ObjectId = require("mongoose").Types.ObjectId; //verificar se o id é valido
 
 module.exports = class PostController {
-  //criar post
+  
   static async create(req, res) {
     const { name, age, weight } = req.body;
 
